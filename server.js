@@ -126,3 +126,9 @@ Employee.deleteOne({eid:request.query.eid},function (err, result) {
       response.json({desc:result})
   });
 });
+
+app.use(express.static('ReactClientApp/build'))
+const path=require('path');
+app.get("*",(req,res)=>{
+  res.sendFile(path.resolve(__dirname,'ReactClientApp','build','index.html'));
+})
